@@ -2,8 +2,6 @@ class Solution(object):
     def countPairs(self, n, edges):
         d=[0]
         def dfs(i,vis,g):
-            if i in vis:
-                return d[0]
             vis.add(i)
             d[0]+=1
             for adj in g[i]:
