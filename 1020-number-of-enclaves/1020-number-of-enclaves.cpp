@@ -1,14 +1,5 @@
 class Solution {
 public:
-   int dfs(int i,int j,vector<vector<int>> &A){
-        if( i<0 || j<0 || i>=A.size() || j>=A[0].size() || A[i][j]==0)
-            return 0;
-        
-        A[i][j] = 0;
-        
-        return 1+dfs(i-1,j,A)+dfs(i+1,j,A)+dfs(i,j-1,A)+dfs(i,j+1,A);
-    }
-    
     int numEnclaves(vector<vector<int>>& A) {
         int all_one=0;
         for(int i=0;i<A.size();i++){
@@ -24,5 +15,11 @@ public:
         }
         return all_one - close_one;
     }
-    
+                   
+    int dfs(int i,int j,vector<vector<int>> &grid){
+        if( i<0 || j<0 || i>=grid.size() || j>=grid[0].size() || grid[i][j]==0)
+            return 0;
+        grid[i][j] = 0;
+        return 1+dfs(i-1,j,grid)+dfs(i+1,j,grid)+dfs(i,j-1,grid)+dfs(i,j+1,grid);
+    }
 };
